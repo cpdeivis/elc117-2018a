@@ -21,3 +21,27 @@ zipmult(L1,L2,L3) :- L1 = [H|T], L2 = [H1|T1],
     M is H1*H,
     L3 = [M|L],
     zipmult(T,T1,L).
+
+/* Exercício 6 */
+potencia(N,N,[]).
+potencia(N,N1,L) :- N1 < N, 
+    P is 2^N1,
+    L = [P | T],
+    N2 is N1 + 1,
+    potencia(N, N2, T).
+	
+potencias(0,[]).
+potencias(N,L) :- N > 0,
+    potencia(N, 0, L).
+
+/* Exercício 7 */
+positivos([],[]).
+positivos([H|T],L2) :- H > 0,
+    L2 = [H|L],
+    positivos(T, L);
+    positivos(T,L2).
+
+/* Exercício 8 */
+mesmaPosicao(A,[H|T],[H1|T1]) :-  H = A,
+    H1 = A;
+    mesmaPosicao(A, T, T1).
