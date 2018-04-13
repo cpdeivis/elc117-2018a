@@ -45,3 +45,11 @@ positivos([H|T],L2) :- H > 0,
 mesmaPosicao(A,[H|T],[H1|T1]) :-  H = A,
     H1 = A;
     mesmaPosicao(A, T, T1).
+ 
+/* Exercício 10 */
+azulejos(0, 0).
+azulejos(NA, NQ) :- NA > 0,
+    N is floor(sqrt(NA)),
+    R is NA - N*N,
+    azulejos(R, N1),
+    NQ is N1 + 1.
