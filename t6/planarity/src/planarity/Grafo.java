@@ -40,8 +40,9 @@ public class Grafo {
     
     public boolean bContato(){
         boolean bTeste = false;
-        for(Aresta are : arestas)
-            bTeste = bTeste && are.checkContato(arestas);
+        for(Aresta are : arestas){
+            bTeste = bTeste || are.checkContato(arestas);
+        }
             
         return bTeste;
     }

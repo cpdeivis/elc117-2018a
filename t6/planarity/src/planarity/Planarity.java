@@ -1,19 +1,21 @@
 package planarity;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * 78:20
+ * 
  * @author cpdeivis
  */
 public class Planarity extends Application {
@@ -65,8 +67,9 @@ public class Planarity extends Application {
         popup.setContentText("Fase: " + Level + " concluída\n");
         popup.setHeaderText(null);
         popup.showAndWait();
-        Level++;
         
+        Level++;
+        aPuzzle.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         gPlanar = logica.geraGrafo(Level);
         refreshPane();
     }

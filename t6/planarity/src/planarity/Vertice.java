@@ -1,7 +1,6 @@
 package planarity;
 
 import java.util.ArrayList;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -15,16 +14,24 @@ public class Vertice {
     private ArrayList<Aresta> caminhos;
     
     Vertice(double x, double y, Color cor){
-        this.forma = new Circle(x, y, 20, cor);
+        this.forma = new Circle(x, y, 19, cor);
+        this.forma.setStroke(Color.BLACK);
+        this.forma.setStrokeWidth(1);
         this.caminhos = new ArrayList<Aresta>();
         
         forma.setOnMouseDragged((MouseEvent e) -> {
             setX(e.getX());
             setY(e.getY());
             setCor(Color.RED);
+            caminhos.forEach((are) -> {
+                are.setColor(Color.DARKORCHID);
+            });
         });
         forma.setOnMouseReleased((MouseEvent e) -> {
             setCor(Color.DARKSALMON);
+            caminhos.forEach((are) -> {
+                are.setColor(Color.BLACK);
+            });
         });
     }
 

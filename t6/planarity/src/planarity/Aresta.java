@@ -42,11 +42,9 @@ public class Aresta {
                 continue;
             Shape intersect = Shape.intersect(linha, are.getLinha());
             if (intersect.getBoundsInLocal().getWidth() != -1) {
-                this.setColor(Color.GRAY);
                 return true;
             }
         }
-        this.setColor(Color.BLACK);
         return false;
     }
 }
