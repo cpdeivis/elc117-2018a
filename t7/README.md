@@ -1,6 +1,8 @@
-# Dashboard para monitoramento de frota de ônibus urbanos
+# t7: Dashboard para monitoramento de frota de ônibus urbanos
 
-Tudo o que precisa está aqui(tem coisa até demais).
+O programa é um dashboard para visualização de dados sobre a [frota de ônibus da cidade do Rio de Janeiro](https://pcrj.maps.arcgis.com/home/item.html?id=c47f8bb36e2e4760a761111ac58f5ec0).
+
+![Printscreen Dashboard](https://github.com/oscaruno/elc117-2018a/blob/master/t7/print.png "Printscreen Dashboard")
 
 ## Disclaimer
 - Não sei fazer design com JavaFX, então para uma experiência interessante utilize a resolução 1366x768 =/ ;
