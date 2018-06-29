@@ -1,4 +1,5 @@
-package dashtransporte;
+//Caso use o NetBeans, descomentar a linha abaixo
+//package dashtransporte;
 
 import java.io.*;
 import java.net.URL;
@@ -29,24 +30,24 @@ public class FeederModel {
         inercia[1] = dados.size() - inercia[0];
         return inercia;
     }
-    
+
     public Map<String, Long> getLinhas(){
-        Map<String, Long> ocorrencias =  
+        Map<String, Long> ocorrencias =
             dados.stream().filter(x -> x.getVelocidade() > 0 && !x.getLinha().isEmpty()).collect(Collectors.groupingBy(
                 DataModel::getLinha, Collectors.counting()
             ));
-        
+
         return ocorrencias;
     }
-    
+
     public ArrayList<DataModel> getLista(){
         return dados;
     }
-    
+
     public String[] getInfo(){
         return information;
     }
-    
+
     public ArrayList<DataModel> getDados(String url){
         JSONObject dataJSON = null;
         try{
@@ -78,7 +79,7 @@ public class FeederModel {
         information[0] = String.valueOf(qtd);
         information[2] = dados.get(qtd-1).getDataHora();
         information[3] = dados.get(0).getDataHora();
-        
+
         return dados;
     }
     private JSONObject getFromURL(String url) throws IOException, JSONException{
@@ -91,7 +92,7 @@ public class FeederModel {
             response.append(inputLine);
         }
         in.close();
-            
+
         JSONObject json = new JSONObject(response.toString());
         return json;
     }
@@ -106,7 +107,7 @@ public class FeederModel {
             scanner.append(inputLine);
         }
         in.close();
-            
+
         JSONObject json = new JSONObject(scanner.toString());
         return json;
     }

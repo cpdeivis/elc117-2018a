@@ -1,4 +1,5 @@
-package dashtransporte;
+//Caso use o NetBeans, descomentar a linha abaixo
+//package dashtransporte;
 
 import java.util.Map;
 import javafx.collections.FXCollections;
@@ -26,13 +27,13 @@ public class GraficosController{
     private Label lblRecente;
     @FXML
     private Label lblAntiga;
-    
+
     public void initialize(int inercia[], Map<String, Long> linhas, String[] info) {
         setPieChart(inercia);
         setBarChart(linhas);
         setLabels(info);
-    } 
-    
+    }
+
     public void updateData(int inercia[], Map<String, Long> linhas, String[] info) {
         graInercia.getData().clear();
         graInercia.layout();
@@ -42,14 +43,14 @@ public class GraficosController{
         setBarChart(linhas);
         setLabels(info);
     }
-    
+
     private void setLabels(String infos[]){
         lblQtd.setText(infos[0]);
         lblServidor.setText(infos[1]);
         lblRecente.setText(infos[2]);
         lblAntiga.setText(infos[3]);
     }
-    
+
     private void setPieChart(int inercia[]){
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Em Movimento - " + inercia[0],inercia[0]),
@@ -57,13 +58,13 @@ public class GraficosController{
         );
         graInercia.setData(pieChartData);
     }
-    
-    private void setBarChart(Map<String, Long> linhas){        
+
+    private void setBarChart(Map<String, Long> linhas){
         XYChart.Series<String, Long> dataSeries = new XYChart.Series<>();
         linhas.forEach((key, val) ->{
             dataSeries.getData().add(new XYChart.Data<>(key, val));
         });
-        
+
         graIneLinha.getData().add(dataSeries);
     }
 }

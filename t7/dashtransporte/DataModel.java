@@ -1,4 +1,5 @@
-package dashtransporte;
+//Caso use o NetBeans, descomentar a linha abaixo
+//package dashtransporte;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -55,5 +56,5 @@ public class DataModel {
     }
     public float getVelocidade() {
         return Velocidade;
-    }  
+    }
 }

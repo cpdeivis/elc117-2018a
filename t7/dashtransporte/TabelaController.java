@@ -1,4 +1,5 @@
-package dashtransporte;
+//Caso use o NetBeans, descomentar a linha abaixo
+//package dashtransporte;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-//import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,7 +44,7 @@ public class TabelaController{
     private TableColumn<DataTable,Float> velCol;
     @FXML
     private TableColumn<DataTable,DataTable> gMaps;
-    
+
     @FXML
     private CheckBox cbVelocidade;
     @FXML
@@ -53,9 +53,9 @@ public class TabelaController{
     private TextField txtLinha;
     @FXML
     private Button btnShow;
-    
+
     private ObservableList<DataTable> masterData = FXCollections.observableArrayList();
-    
+
     public void initialize(ArrayList<DataModel> dados) {
         // TODO
         dataCol.setCellValueFactory(new PropertyValueFactory<>("DataHora"));
@@ -65,7 +65,7 @@ public class TabelaController{
         lonCol.setCellValueFactory(new PropertyValueFactory<>("Lon"));
         velCol.setCellValueFactory(new PropertyValueFactory<>("Vel"));
         gMaps.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        
+
         gMaps.setCellFactory(param -> new TableCell<DataTable, DataTable>() {
             private final Button btngMaps = new Button("gMaps");
             @Override
@@ -84,14 +84,12 @@ public class TabelaController{
                         root = fxmlgMaps.load();
                         GMapsController controller = fxmlgMaps.getController();
                         controller.initialize(person.LatProperty().get(), person.LonProperty().get(), person.OrdemProperty().get());
-                        
+
                         Stage stage = new Stage();
                         stage.setTitle("Localização");
                         stage.setScene(new Scene(root, 500, 500));
                         stage.setResizable(false);
                         stage.show();
-                        // Hide this current window (if this is what you want)
-                        //((Node)(event.getSource())).getScene().getWindow().hide();
                     }
                     catch (IOException e) {
                         e.printStackTrace();
@@ -99,7 +97,7 @@ public class TabelaController{
                 });
             }
         });
-        
+
         btnShow.setOnAction((ActionEvent event) -> {
             if(cbFiltragem.isSelected()){
                 FilteredList<DataTable> filteredData = new FilteredList<>(masterData);
@@ -115,17 +113,16 @@ public class TabelaController{
                 tabAllData.setItems(masterData);
             }
         });
-        
-        setItens(dados); 
+
+        setItens(dados);
         tabAllData.setItems(masterData);
     }
-    
+
     public void updateData(ArrayList<DataModel> dados){
         setItens(dados);
         if(!cbFiltragem.isSelected()){
             tabAllData.setItems(masterData);
         }
-        //System.out.print(masterData.size() + " - " + tabAllData.getItems().size() + " - ");
     }
 
     private void setItens(ArrayList<DataModel> dados){
@@ -134,7 +131,7 @@ public class TabelaController{
             masterData.add(new DataTable(dado));
         });
     }
-    
+
     //Representação da DataModel para ser usada na tabela
     public static class DataTable{
         private final SimpleStringProperty DataHora;
@@ -170,6 +167,6 @@ public class TabelaController{
         }
         public SimpleFloatProperty VelProperty() {
             return Vel;
-        }        
+        }
     }
 }
